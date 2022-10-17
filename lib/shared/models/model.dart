@@ -1,0 +1,13 @@
+export 'asset_platrofrms/asset_platforms.model.dart';
+export 'coin/coin.model.dart';
+export 'community_data/community_data.model.dart';
+export 'developer_data/developer_data.model.dart';
+export 'exchange/exchange.model.dart';
+export 'exchange_api_item/exchange_api_item.model.dart';
+export 'exchange_volume/exchange_volume.model.dart';
+export 'global_data/global_data.model.dart';
+export 'image/image.model.dart';
+export 'links/links.model.dart';
+export 'market/market.model.dart';
+export 'repository_url/repository_url.model.dart';
+export 'ticker/ticker.model.dart';

@@ -1,0 +1,131 @@
+name: crypto_watcher
+description: A new Flutter project.
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  get_it: 7.2.0
+  injectable: ^1.5.3
+  json_annotation: ^4.7.0
+  freezed_annotation: ^2.1.0
+  auto_route: 5.0.2
+  convex_bottom_bar: ^3.1.0+1
+  cupertino_icons: ^1.0.2
+  easy_localization: 3.0.1
+  fl_chart: ^0.55.2
+  flutter_bloc: 8.1.1
+  flutter_native_splash: ^2.2.11
+  flutter_screenutil: ^5.5.4
+  fluttertoast: ^8.1.1
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  http: 0.13.5
+  salomon_bottom_bar: 3.3.1
+  shimmer: 2.0.0
+  pretty_dio_logger: ^1.1.1
+  dio: ^4.0.6
+  retrofit: ^3.3.1
+  flutter_dotenv: ^5.0.2
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  build_runner: ^2.3.0
+  json_serializable: ^6.3.1
+  auto_route_generator: ^5.0.2
+  flutter_launcher_icons: 0.10.0
+  flutter_lints: 2.0.1
+  freezed: ^2.2.0
+  injectable_generator: ^1.5.4
+  retrofit_generator: ^4.2.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - .env
+    - assets/images/
+    - assets/translations/
+    - assets/fonts/
+    - assets/fonts/Montserrat/
+
+  fonts:
+    # For details regarding fonts from package dependencies,
+    # see https://flutter.dev/custom-fonts/#from-packages
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat/Montserrat-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Montserrat/Montserrat-ThinItalic.ttf
+          style: italic
+          weight: 100
+        - asset: assets/fonts/Montserrat/Montserrat-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Montserrat/Montserrat-ExtraLightItalic.ttf
+          style: italic
+          weight: 200
+        - asset: assets/fonts/Montserrat/Montserrat-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Montserrat/Montserrat-LightItalic.ttf
+          style: italic
+          weight: 300
+        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Montserrat/Montserrat-Italic.ttf
+          style: italic
+          weight: 400
+        - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Montserrat/Montserrat-MediumItalic.ttf
+          style: italic
+          weight: 500
+        - asset: assets/fonts/Montserrat/Montserrat-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Montserrat/Montserrat-SemiBoldItalic.ttf
+          style: italic
+          weight: 600
+        - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Montserrat/Montserrat-BoldItalic.ttf
+          style: italic
+          weight: 700
+        - asset: assets/fonts/Montserrat/Montserrat-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Montserrat/Montserrat-ExtraBoldItalic.ttf
+          style: italic
+          weight: 800
+        - asset: assets/fonts/Montserrat/Montserrat-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Montserrat/Montserrat-BlackItalic.ttf
+          style: italic
+          weight: 900
+    # w100 Thin, the least thick
+    # w200 Extra-light
+    # w300 Light
+    # w400 Normal / regular / plain
+    # w500 Medium
+    # w600 Semi-bold
+    # w700 Bold
+    # w800 Extra-bold
+    # w900 Black, the most thick
+
+flutter_native_splash:
+  color: "#0C0B09"
+  image: "assets/images/crypto_splash_screen.png"
+
+flutter_icons:
+  image_path: "assets/images/crypto_favicon.png"
+  android: true
+  ios: true
+
+
+

@@ -34,6 +34,8 @@ dependencies:
   dio: ^4.0.6
   retrofit: ^3.3.1
   flutter_dotenv: ^5.0.2
+  cached_network_image: ^3.2.2
+  iconsax: ^0.0.8
 
 
 dev_dependencies:
@@ -119,7 +121,7 @@ flutter:
     # w900 Black, the most thick
 
 flutter_native_splash:
-  color: "#0C0B09"
+  color: "#172a57"
   image: "assets/images/crypto_splash_screen.png"
 
 flutter_icons:

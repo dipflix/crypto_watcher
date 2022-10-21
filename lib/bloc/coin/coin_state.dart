@@ -5,7 +5,7 @@ class CoinState with _$CoinState {
   const factory CoinState.loading() = CoinState_loading;
 
   const factory CoinState.ready({
-    required Iterable<CoinModel> coins,
+    required CoinFullModel coinModel,
   }) = CoinState_Ready;
 
   const factory CoinState.error({

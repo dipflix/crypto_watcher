@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/empty_router_widgets.dart';
 import 'package:crypto_watcher/app.navigator.dart';
+import 'package:crypto_watcher/screens/detail/detail.screen.dart';
 
 import 'package:crypto_watcher/screens/screens.dart';
 
@@ -16,9 +17,15 @@ import 'package:crypto_watcher/screens/screens.dart';
           path: 'home',
           page: EmptyRouterScreen,
           children: [
-            AutoRoute(
+            CustomRoute(
               path: '',
               page: HomeScreen,
+              transitionsBuilder: TransitionsBuilders.noTransition,
+            ),
+            CustomRoute(
+              path: 'coinDetail',
+              page: CoinDetailScreen,
+              transitionsBuilder: TransitionsBuilders.noTransition,
             ),
           ],
         ),
@@ -27,9 +34,10 @@ import 'package:crypto_watcher/screens/screens.dart';
           path: 'market',
           page: EmptyRouterScreen,
           children: [
-            AutoRoute(
+            CustomRoute(
               path: '',
               page: MarketScreen,
+              transitionsBuilder: TransitionsBuilders.noTransition,
             ),
           ],
         ),
@@ -38,9 +46,10 @@ import 'package:crypto_watcher/screens/screens.dart';
           path: 'settings',
           page: EmptyRouterScreen,
           children: [
-            AutoRoute(
-              path: '',
+            CustomRoute(
               page: SettingScreen,
+              path: '',
+              transitionsBuilder: TransitionsBuilders.noTransition,
             ),
           ],
         ),

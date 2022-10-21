@@ -1,16 +1,21 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:crypto_watcher/router/router.gr.dart';
+import 'package:crypto_watcher/uikit/styles/shadows.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
+import 'package:iconsax/iconsax.dart';
 
 class AppNavigatorWrapper extends StatelessWidget {
   const AppNavigatorWrapper({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return AutoTabsScaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: theme.backgroundColor,
       homeIndex: 0,
       routes: [
         HomeRouter(),
@@ -19,54 +24,74 @@ class AppNavigatorWrapper extends StatelessWidget {
       ],
       builder:
           (BuildContext context, Widget child, Animation<double> animation) {
-        return Scaffold(
-          body: SafeArea(
-            child: child,
-          ),
+        return FadeTransition(
+          opacity: animation,
+          child: child,
         );
       },
       bottomNavigationBuilder: (_, TabsRouter tabsRouter) {
-        return BottomNavigationBar(
-          onTap: tabsRouter.setActiveIndex,
-          selectedItemColor: Theme.of(context).focusColor,
-          unselectedItemColor: Theme.of(context).hintColor,
-          backgroundColor: Theme.of(context).primaryColor,
-          items: [
-            BottomNavigationBarItem(
-              activeIcon: Icon(
-                Icons.bar_chart,
-                color: Theme.of(context).focusColor,
+        return DecoratedBox(
+          decoration: BoxDecoration(
+            boxShadow: [AppShadows.mobileMenuShadow],
+          ),
+          child: BottomNavigationBar(
+            onTap: tabsRouter.setActiveIndex,
+            selectedItemColor: theme.primaryColor,
+            unselectedItemColor: theme.hintColor,
+            backgroundColor: theme.scaffoldBackgroundColor,
+            iconSize: 32,
+            items: [
+              BottomNavigationBarItem(
+                activeIcon: DecoratedBox(
+                  decoration: BoxDecoration(
+                    boxShadow: AppShadows.primary,
+                  ),
+                  child: Icon(
+                    Iconsax.home_trend_up,
+                    color: theme.primaryColor,
+                  ),
+                ),
+                icon: Icon(
+                  Iconsax.home_trend_up,
+                  color: theme.hintColor,
+                ),
+                label: 'ratings'.tr(),
               ),
-              icon: Icon(
-                Icons.bar_chart,
-                color: Theme.of(context).hintColor,
+              BottomNavigationBarItem(
+                activeIcon: DecoratedBox(
+                  decoration: BoxDecoration(
+                    boxShadow: AppShadows.primary,
+                  ),
+                  child: Icon(
+                    Iconsax.chart_2,
+                    color: theme.primaryColor,
+                  ),
+                ),
+                icon: Icon(
+                  Iconsax.chart_2,
+                  color: theme.hintColor,
+                ),
+                label: 'market'.tr(),
               ),
-              label: 'ratings'.tr(),
-            ),
-            BottomNavigationBarItem(
-              activeIcon: Icon(
-                Icons.pie_chart,
-                color: Theme.of(context).focusColor,
+              BottomNavigationBarItem(
+                activeIcon: DecoratedBox(
+                  decoration: BoxDecoration(
+                    boxShadow: AppShadows.primary,
+                  ),
+                  child: Icon(
+                    Iconsax.setting_3,
+                    color: theme.primaryColor,
+                  ),
+                ),
+                icon: Icon(
+                  Iconsax.setting_3,
+                  color: theme.hintColor,
+                ),
+                label: 'settings'.tr(),
               ),
-              icon: Icon(
-                Icons.pie_chart,
-                color: Theme.of(context).hintColor,
-              ),
-              label: 'market'.tr(),
-            ),
-            BottomNavigationBarItem(
-              activeIcon: Icon(
-                Icons.manage_accounts,
-                color: Theme.of(context).focusColor,
-              ),
-              icon: Icon(
-                Icons.manage_accounts,
-                color: Theme.of(context).hintColor,
-              ),
-              label: 'settings'.tr(),
-            ),
-          ],
-          currentIndex: tabsRouter.activeIndex,
+            ],
+            currentIndex: tabsRouter.activeIndex,
+          ),
         );
       },
     );

@@ -1,3 +1,4 @@
+import 'package:crypto_watcher/bloc/bloc.dart';
 import 'package:crypto_watcher/router/router.gr.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +18,19 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   //final SettingsBloc settingsBloc = getIt.get();
-  String? themeType;
-  final AppRouter _appRouter = AppRouter();
+  ThemeMode themeMode = ThemeMode.light;
+  final AppRouter _appRouter = getIt<AppRouter>();
+  late final ThemeCubit themeCubit;
 
   @override
   void initState() {
+    themeCubit = getIt<ThemeCubit>();
     super.initState();
+    themeCubit.stream.listen((event) {
+      setState(() {
+        themeMode = event.mode;
+      });
+    });
     // settingsBloc.add(const SettingsEvent.getTheme());
   }
 
@@ -31,38 +39,64 @@ class _AppState extends State<App> {
     return ScreenUtilInit(
         designSize: screenSize,
         builder: (BuildContext context, Widget? child) {
-          return MaterialApp.router(
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            theme: materialTheme().copyWith(
-              scaffoldBackgroundColor: Colors.white,
-              primaryColor: Palette.overlay1,
-              hintColor: Palette.background,
-              focusColor: Palette.tertriary,
-              textTheme: textTheme.apply(
-                fontFamily: 'Montserrat',
-                bodyColor: Palette.base1,
-              ),
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: themeCubit),
+            ],
+            child: MaterialApp.router(
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+              theme: lightTheme(),
+              themeMode: themeMode,
+              // themeMode:
+              //     state.themeType == 'night' ? ThemeMode.dark : ThemeMode.light,
+              darkTheme: darkTheme(),
+              debugShowCheckedModeBanner: false,
+              title: 'Crypto Watcher',
+              routerDelegate: _appRouter.delegate(),
+              routeInformationParser: _appRouter.defaultRouteParser(),
             ),
-            themeMode: ThemeMode.dark,
-            // themeMode:
-            //     state.themeType == 'night' ? ThemeMode.dark : ThemeMode.light,
-            darkTheme: materialTheme().copyWith(
-              scaffoldBackgroundColor: Palette.background,
-              primaryColor: Palette.base1,
-              hintColor: Palette.white,
-              focusColor: Palette.primary,
-              textTheme: textTheme.apply(
-                fontFamily: 'Montserrat',
-                bodyColor: Palette.white,
-              ),
-            ),
-            debugShowCheckedModeBanner: false,
-            title: 'Crypto Watcher',
-            routerDelegate: _appRouter.delegate(),
-            routeInformationParser: _appRouter.defaultRouteParser(),
           );
         });
+  }
+
+  ThemeData darkTheme() {
+    return materialTheme.copyWith(
+      scaffoldBackgroundColor: Palette.background,
+      backgroundColor: Palette.background,
+      primaryColor: Palette.tertriary,
+      hintColor: Palette.white,
+      focusColor: Palette.base1,
+      iconTheme: IconThemeData(color: Palette.white),
+      appBarTheme: materialTheme.appBarTheme.copyWith(
+        color: Palette.background,
+        titleTextStyle: textTheme.bodyText2!.copyWith(
+          color: Palette.white,
+        ),
+        toolbarTextStyle: textTheme.bodyText2!.copyWith(
+          color: Palette.white,
+        ),
+        iconTheme: IconThemeData(color: Palette.white),
+      ),
+      textTheme: textTheme.apply(
+        fontFamily: 'Montserrat',
+        bodyColor: Palette.white,
+      ),
+    );
+  }
+
+  ThemeData lightTheme() {
+    return materialTheme.copyWith(
+      scaffoldBackgroundColor: Palette.white,
+      backgroundColor: Colors.white,
+      primaryColor: Palette.primary,
+      hintColor: Palette.background,
+      focusColor: Palette.overlay2,
+      textTheme: textTheme.apply(
+        fontFamily: 'Montserrat',
+        bodyColor: Palette.base1,
+      ),
+    );
   }
 }

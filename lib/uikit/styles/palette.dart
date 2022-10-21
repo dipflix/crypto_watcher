@@ -9,14 +9,16 @@ class Palette {
   static const Color base4 = Color(0xFF3D3C3A);
   static const Color baseHover = Color(0xFF22211F);
 
+  static const Color dark = Color(0xFF1E1E1E);
+
   static const Color overlay1 = Color(0xFFF7F7F7);
   static const Color overlay2 = Color(0xFFDFDFDF);
   static const Color overlay3 = Color(0xFFA19999);
   static const Color overlay4 = Color(0xFF595857);
 
-  static const Color primary = Color(0xFF82E9FF);
+  static const Color primary = Color(0xFF1A5CFF);
   static const Color secondary = Color(0xFF1CC8EE);
-  static const Color tertriary = Color(0xFF0096B7);
+  static const Color tertriary = Color(0xFF477CFF);
 
   static const LinearGradient gradient = LinearGradient(
     begin: Alignment.centerLeft,
@@ -27,11 +29,15 @@ class Palette {
     ],
   );
 
-  static const Color errorRed = Color(0xFFFF3B30);
+  static const Color errorRed = Color(0xFFFF4757);
   static const Color lightRed = Color(0xFFFF6057);
   static const Color accentBlue = Color(0xFF6BD1E7);
   static const Color accentDarkBlue = Color(0xFF6B9DE7);
 
   static const Color darkBlue = Color(0xff37434d);
   static const Color darkRed = Color(0xff4D3737);
+
+
+  static const Color success = Color(0xff46C93A);
+  static const Color warm = Color(0xffFFBA00);
 }

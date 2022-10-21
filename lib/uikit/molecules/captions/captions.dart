@@ -1,0 +1,1 @@
+export 'price_percentage_caption/price_percentage_caption.dart';

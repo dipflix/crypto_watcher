@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'app.dart';
 import 'di/injector.dart';
+import 'router/router.gr.dart';
 
 const Size screenSize = Size(375, 812);
 
@@ -17,13 +18,19 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
-  runApp(EasyLocalization(
-    supportedLocales: const <Locale>[
-      Locale('en'),
-      Locale('ru'),
-    ],
-    fallbackLocale: const Locale('en'),
-    path: 'assets/translations',
-    child: const App(),
-  ));
+  getIt.registerSingleton<AppRouter>(AppRouter());
+
+  runApp(
+    EasyLocalization(
+      supportedLocales: const <Locale>[
+        Locale('en'),
+        Locale('ru'),
+        Locale('ua'),
+      ],
+      startLocale: const Locale('en'),
+      fallbackLocale: const Locale('en'),
+      path: 'assets/translations',
+      child: const App(),
+    ),
+  );
 }

@@ -38,6 +38,8 @@ class MarketsBloc extends Bloc<MarketsEvent, MarketsState> {
         sparkline: event.sparkline,
       );
 
+      print(response.first);
+
       emit(MarketsState.ready(markets: response));
     } on DioError catch (e) {
       emit(MarketsState.error(error: e));

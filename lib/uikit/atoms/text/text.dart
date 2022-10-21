@@ -1,7 +1,6 @@
 import 'package:crypto_watcher/uikit/styles/styles.dart';
 import 'package:crypto_watcher/uikit/styles/text_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TextBody extends Text {
   final String text;
@@ -39,6 +38,7 @@ class TextBody extends Text {
     double? fontSize,
     TextAlign? textAlign,
     TextStyle? style,
+    TextOverflow? overflow,
   }) =>
       TextBody(
         text,
@@ -48,6 +48,7 @@ class TextBody extends Text {
         fontWeight: FontWeight.w100,
         textAlign: textAlign,
         ownStyle: style,
+        overflow: overflow,
       );
 
   factory TextBody.extraLight(
@@ -57,6 +58,7 @@ class TextBody extends Text {
     double? fontSize,
     TextAlign? textAlign,
     TextStyle? style,
+    TextOverflow? overflow,
   }) =>
       TextBody(
         text,
@@ -66,6 +68,7 @@ class TextBody extends Text {
         fontWeight: FontWeight.w200,
         textAlign: textAlign,
         ownStyle: style,
+        overflow: overflow,
       );
 
   factory TextBody.light(
@@ -75,6 +78,7 @@ class TextBody extends Text {
     double? fontSize,
     TextAlign? textAlign,
     TextStyle? style,
+    TextOverflow? overflow,
   }) =>
       TextBody(
         text,
@@ -84,6 +88,7 @@ class TextBody extends Text {
         fontWeight: FontWeight.w300,
         textAlign: textAlign,
         ownStyle: style,
+        overflow: overflow,
       );
 
   factory TextBody.medium(
@@ -93,6 +98,7 @@ class TextBody extends Text {
     double? fontSize,
     TextAlign? textAlign,
     TextStyle? style,
+    TextOverflow? overflow,
   }) =>
       TextBody(
         text,
@@ -102,6 +108,7 @@ class TextBody extends Text {
         fontWeight: FontWeight.w500,
         textAlign: textAlign,
         ownStyle: style,
+        overflow: overflow,
       );
 
   factory TextBody.semiBold(
@@ -111,6 +118,7 @@ class TextBody extends Text {
     double? fontSize,
     TextAlign? textAlign,
     TextStyle? style,
+    TextOverflow? overflow,
   }) =>
       TextBody(
         text,
@@ -120,6 +128,7 @@ class TextBody extends Text {
         fontWeight: FontWeight.w600,
         textAlign: textAlign,
         ownStyle: style,
+        overflow: overflow,
       );
 
   factory TextBody.bold(
@@ -129,6 +138,7 @@ class TextBody extends Text {
     double? fontSize,
     TextAlign? textAlign,
     TextStyle? style,
+    TextOverflow? overflow,
   }) =>
       TextBody(
         text,
@@ -138,6 +148,7 @@ class TextBody extends Text {
         fontWeight: FontWeight.w700,
         textAlign: textAlign,
         ownStyle: style,
+        overflow: overflow,
       );
 
   factory TextBody.extraBold(
@@ -147,6 +158,7 @@ class TextBody extends Text {
     double? fontSize,
     TextAlign? textAlign,
     TextStyle? style,
+    TextOverflow? overflow,
   }) =>
       TextBody(
         text,
@@ -156,6 +168,7 @@ class TextBody extends Text {
         fontWeight: FontWeight.w800,
         textAlign: textAlign,
         ownStyle: style,
+        overflow: overflow,
       );
 
   factory TextBody.black(
@@ -165,6 +178,7 @@ class TextBody extends Text {
     double? fontSize,
     TextAlign? textAlign,
     TextStyle? style,
+    TextOverflow? overflow,
   }) =>
       TextBody(
         text,
@@ -174,5 +188,6 @@ class TextBody extends Text {
         fontWeight: FontWeight.w900,
         textAlign: textAlign,
         ownStyle: style,
+        overflow: overflow,
       );
 }
